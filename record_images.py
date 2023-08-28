@@ -2,16 +2,14 @@
 import cv2
 import time
 
-# cap = cv2.VideoCapture(0)
-
 # list all cameras
 for i in range(10):
     cap = cv2.VideoCapture(i)
     if cap.isOpened():
-        print(f"camera {i} is opened")
+        print(f"camera {i} is available")
         cap.release()
 
-# capture USB camera
+# capture USB camera TODO: change this to your camera
 cap = cv2.VideoCapture(1)
 
 cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1920)

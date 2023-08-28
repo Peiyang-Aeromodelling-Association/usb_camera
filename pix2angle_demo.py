@@ -34,6 +34,7 @@ def pixrel_to_angle(x_rel, y_rel, intrinsic_matrix, in_radians=False):
     y = y_rel * intrinsic_matrix[1][2] * 2
     return pixel_to_angle(x, y, intrinsic_matrix, in_radians)
 
+
 # 打开摄像头
 cap = cv2.VideoCapture(1)
 
@@ -42,8 +43,9 @@ cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 1080)
 
 cap.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter.fourcc('M', 'J', 'P', 'G'))  # MJPG
 
-intrinsic_matrix = np.array([[2744.39055, 0.00000, 995.57729],
-                             [0.00000, 2736.84056, 537.39599],
+# TODO: change this to your camera's intrinsic matrix
+intrinsic_matrix = np.array([[2693.08823, 0.00000, 1054.17649],
+                             [0.00000, 2702.62836, 503.34463],
                              [0.00000, 0.00000, 1.00000]])
 
 display_size = (192 * 5, 108 * 5)
@@ -72,8 +74,8 @@ while True:
     x_rel, y_rel = max_loc[0] / w, max_loc[1] / h
     x_angle_, y_angle_, theta_ = pixrel_to_angle(x_rel, y_rel, intrinsic_matrix)
 
-    print(f"max_loc: {max_loc}, x_rel: {x_rel}, y_rel: {y_rel},"
-          f" x_angle: {x_angle_}, y_angle: {y_angle_}, theta: {theta_}")
+    print(f"max_loc: {max_loc},\t x_rel: {x_rel:.5f},\t y_rel: {y_rel:.5f},"
+          f"\t x_angle: {x_angle_:.5f},\t y_angle: {y_angle_:.5f},\t theta: {theta_:.5f}")
 
     # 显示角度
     cv2.putText(frame, f"x_angle={x_angle_}", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
