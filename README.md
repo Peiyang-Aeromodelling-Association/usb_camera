@@ -10,4 +10,4 @@
 
 ## 亮斑追踪demo
 
-运行`python pix2angle_demo.py`，会显示亮斑（如手机摄像头）的角度。
+运行`python pix2angle_demo.py`，会显示亮斑（如手机手电筒）的角度。
